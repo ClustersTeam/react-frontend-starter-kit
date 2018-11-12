@@ -8,7 +8,6 @@ Unfortunately, scripts in package.json can't be commented inline because the JSO
 
 | **Script**        | **Description**                                                                                                                                            |
 | ----------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| remove-demo       | Removes the demo application so you can begin development.                                                                                                 |
 | prestart          | Runs automatically before start to display a message.                                                                                                      |
 | start             | Runs tests, lints, starts dev webserver, and opens the app in your default browser.                                                                        |
 | lint:tools        | Runs ESLint on build related JS files. (eslint-loader lints src files via webpack when `npm start` is run)                                                 |
@@ -48,7 +47,7 @@ Unfortunately, scripts in package.json can't be commented inline because the JSO
 ├── tools                     # Node scripts that run build related tools
 │   └── analyzeBundle.js      # Analyzes the webpack bundle
 │   ├── assetsTransformer.js  # Fix for jest handling static assets like imported images
-│   ├── setup                 # Scripts for setting up a new project using React Slingshot
+│   ├── setup                 # Scripts for setting up a new project using React 
 │   │   ├── setup.js          # Configure project set up
 │   │   ├── setupMessage.js   # Display message when beginning set up
 │   │   └── setupPrompts.js   # Configure prompts for set up
@@ -205,7 +204,7 @@ That said, you can of course place your tests under **test** instead. Then Jest 
 ## How do I debug?
 
 Since browsers don't currently support ES6, we're using Babel to compile our ES6 down to ES5. This means the code that runs in the browser looks different than what we wrote. But good news, a [sourcemap](http://www.html5rocks.com/en/tutorials/developertools/sourcemaps/) is generated to enable easy debugging. This means your original JS source will be displayed in your browser's dev console.
-_Note:_ When you run `npm start`, no JS is minified. Why? Because minifying slows the build. So JS is only minified when you run the `npm run build` script. See [more on building for production above](https://github.com/coryhouse/react-slingshot/blob/master/docs/FAQ.md#how-do-i-deploy-this).
+_Note:_ When you run `npm start`, no JS is minified. Why? Because minifying slows the build. So JS is only minified when you run the `npm run build` script.
 
 Also note that no actual physical files are written to the filesystem during the dev build. **For performance, all files exist in memory when served from the webpack server.**. Physical files are only written when you run `npm run build`.
 
@@ -249,7 +248,7 @@ In short, Gulp is an unnecessary abstraction that creates more problems than it 
 
 ## Why does package.json reference the exact version?
 
-This assures that the build won't break when some new version is released. Unfortunately, many package authors don't properly honor [Semantic Versioning](http://semver.org), so instead, as new versions are released, we'll test them and then introduce them into React Slingshot. But yes, this means when you do `npm update` no new dependencies will be pulled down. You'll have to update package.json with the new version manually.
+This assures that the build won't break when some new version is released. Unfortunately, many package authors don't properly honor [Semantic Versioning](http://semver.org), so instead, as new versions are released, we'll test them and then introduce them into React. But yes, this means when you do `npm update` no new dependencies will be pulled down. You'll have to update package.json with the new version manually.
 
 ## How do I handle images?
 
@@ -271,7 +270,7 @@ To hit the external URL, all devices must be on the same LAN. So this may mean y
 
 ## What about the Redux Devtools?
 
-Install the [Redux devtools extension](https://chrome.google.com/webstore/detail/redux-devtools/lmhkpmbekcpmknklioeibfkpmmfibljd?hl=en) in Chrome Developer Tools. If you're interested in running Redux dev tools cross-browser, Barry Staes created a [branch with the devtools incorporated](https://github.com/coryhouse/react-slingshot/pull/27).
+Install the [Redux devtools extension](https://chrome.google.com/webstore/detail/redux-devtools/lmhkpmbekcpmknklioeibfkpmmfibljd?hl=en) in Chrome Developer Tools.
 
 ## Hot reloading isn't working!
 
@@ -279,7 +278,7 @@ Hot reloading doesn't always play nicely with stateless functional components at
 
 ## How do I setup code coverage reporting?
 
-Use the `npm run test:cover` command to run the tests, building a code coverage report. The report is written to `/coverage/lcov-report/index.html`. Slingshot provides a script for this:
+Use the `npm run test:cover` command to run the tests, building a code coverage report. The report is written to `/coverage/lcov-report/index.html`.
 
 ```bash
 npm run open:cover

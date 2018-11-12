@@ -21,7 +21,7 @@ export default {
   output: {
     path: path.resolve(__dirname, 'dist'),
     publicPath: '/',
-    filename: '[name].[contenthash].js'
+    filename: '[name].js'
   },
   plugins: [
     // Tells React to build in prod mode. https://facebook.github.io/react/downloads.html
@@ -29,7 +29,7 @@ export default {
 
     // Generate an external css file with a hash in the filename
     new MiniCssExtractPlugin({
-      filename: '[name].[contenthash].css'
+      filename: '[name].css'
     }),
 
     // Generate HTML file that contains references to generated bundles. See here for how this works: https://github.com/ampedandwired/html-webpack-plugin#basic-usage
