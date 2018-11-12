@@ -27,7 +27,7 @@ export default {
     // Tells React to build in prod mode. https://facebook.github.io/react/downloads.html
     new webpack.DefinePlugin(GLOBALS),
 
-    // Generate an external css file with a hash in the filename
+    // Generate an external css file
     new MiniCssExtractPlugin({
       filename: '[name].css'
     }),
@@ -132,7 +132,8 @@ export default {
             options: {
               sourceMap: true
             }
-          }, {
+          }, 
+          {
             loader: 'postcss-loader',
             options: {
               plugins: () => [
@@ -141,7 +142,8 @@ export default {
               ],
               sourceMap: true
             }
-          }, {
+          }, 
+          {
             loader: 'sass-loader',
             options: {
               includePaths: [path.resolve(__dirname, 'src', 'scss')],
