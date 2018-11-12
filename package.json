@@ -16,8 +16,7 @@
     "remove-dist": "rimraf ./dist",
     "prebuild": "npm run lint && npm run test && npm run clean-dist",
     "build": "babel-node tools/build.js && npm run open:dist",
-    "analyze-bundle": "babel-node ./tools/analyzeBundle.js",
-    "test": "jest"
+    "analyze-bundle": "babel-node ./tools/analyzeBundle.js"
   },
   "browserslist": {
     "production": [
