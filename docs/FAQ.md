@@ -46,11 +46,8 @@ Unfortunately, scripts in package.json can't be commented inline because the JSO
 │   └── utils                 # Plain old JS objects (POJOs). Pure logic. No framework specific code here.
 ├── tools                     # Node scripts that run build related tools
 │   └── analyzeBundle.js      # Analyzes the webpack bundle
-│   ├── assetsTransformer.js  # Fix for jest handling static assets like imported images
-│   ├── setup                 # Scripts for setting up a new project using React 
-│   │   ├── setup.js          # Configure project set up
-│   │   ├── setupMessage.js   # Display message when beginning set up
-│   │   └── setupPrompts.js   # Configure prompts for set up
+│   ├── assetsTransformer.js  # Fix for jest handling static assets like 
+React 
 │   ├── build.js              # Runs the production build
 │   ├── chalkConfig.js        # Centralized configuration for chalk (adds color to console statements)
 │   ├── distServer.js         # Starts webserver and opens final built app that's in dist in your default browser
