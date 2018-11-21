@@ -1,3 +1,34 @@
+import webpack from 'webpack';
+import HtmlWebpackPlugin from 'html-webpack-plugin';
+import path from 'path';
+
+export default {
+    resolve: {
+        extensions: ['*', '.js', '.jsx', '.json']
+    },
+    mode: 'production',
+    entry: {
+        'scripts/components/LanguageSelector': './assets/src/scripts/app/components/LanguageSelector/LanguageSelector.js',
+    },
+    output: {
+        path: path.resolve(__dirname, 'assets/dist'), // Note: Physical files are only output by the production build task `npm run build`.
+        filename: '[name].js',
+    },
+      plugins: [
+    // new HardSourceWebpackPlugin(), Node verion >= 8
+    new webpack.HotModuleReplacementPlugin(),
+    new webpack.NoEmitOnErrorsPlugin(),
+    new HtmlWebpackPlugin({     // Create HTML file that includes references to bundled CSS and JS.
+      template: 'assets/src/index.ejs',
+      minify: {
+        removeComments: true,
+        collapseWhitespace: true
+      },
+      inject: true
+    })
+  ],
+}
+
 // // For info about this file refer to webpack and webpack-hot-middleware documentation
 // // For info on how we're generating bundles with hashed filenames for cache busting: https://medium.com/@okonetchnikov/long-term-caching-of-static-assets-with-webpack-1ecb139adb95#.w99i89nsz
 // import webpack from 'webpack';
