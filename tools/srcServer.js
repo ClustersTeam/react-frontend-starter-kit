@@ -20,7 +20,7 @@ browserSync({
     port: 3001
   },
   server: {
-    baseDir: 'src',
+    baseDir: 'assets/src',
 
     middleware: [
       historyApiFallback(),
@@ -54,6 +54,6 @@ browserSync({
   // no need to watch '*.js' here, webpack will take care of it for us,
   // including full page reloads if HMR won't work
   files: [
-    'src/*.html'
+    'assets/src/*.html'
   ]
 });
