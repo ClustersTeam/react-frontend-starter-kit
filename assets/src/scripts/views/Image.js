@@ -1,6 +1,6 @@
 // Image component
 (function () {
-    console.log('Test')
+    // console.log('Test')
 }());
 
 window.myFunction = function(){
