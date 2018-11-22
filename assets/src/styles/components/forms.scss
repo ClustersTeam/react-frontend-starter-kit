@@ -1,3 +1,20 @@
 #form {
-    background: black;
+    
+    .btn {
+        background: transparent;
+        box-shadow: none;
+        border: 1px solid #ddd;
+        padding: 10px 30px;
+        font-size: 20px;
+        cursor: pointer;
+        transition: 0.3s all ease;
+
+        &:hover {
+            box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+        }
+
+        .power-icon {
+            height: 20px;
+        }
+    }
 }

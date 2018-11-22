@@ -2,19 +2,19 @@ import HtmlWebpackPlugin from 'html-webpack-plugin';
 import path from 'path';
 
 export default {
-    resolve: {
-        extensions: ['*', '.js', '.jsx', '.json']
-    },
-    mode: 'production',
-    entry: {
-        'scripts/components/LanguageSelector': './assets/src/scripts/app/components/LanguageSelector/LanguageSelector.jsx',
-        'scripts/components/Form': './assets/src/scripts/app/components/Form/Form.jsx',
-        'scripts/views/Image': './assets/src/scripts/views/Image.js',
-    },
-    output: {
-        path: path.resolve(__dirname, 'assets/dist'), // Note: Physical files are only output by the production build task `npm run build`.
-        filename: '[name].js',
-    },
+  resolve: {
+    extensions: ['*', '.js', '.jsx', '.json']
+  },
+  mode: 'production',
+  entry: {
+    'scripts/components/LanguageSelector': './assets/src/scripts/app/components/LanguageSelector/LanguageSelector.jsx',
+    'scripts/components/Form': './assets/src/scripts/app/components/Form/Form.jsx',
+    'scripts/views/Image': './assets/src/scripts/views/Image.js',
+  },
+  output: {
+    path: path.resolve(__dirname, 'assets/dist'), // Note: Physical files are only output by the production build task `npm run build`.
+    filename: '[name].js',
+  },
   plugins: [
     // Generate HTML file that contains references to generated bundles. See here for how this works: https://github.com/ampedandwired/html-webpack-plugin#basic-usage
     new HtmlWebpackPlugin({
@@ -47,31 +47,55 @@ export default {
       {
         test: /(\.css|\.scss|\.sass)$/,
         use: [
-           'style-loader',
-           {
-             loader: 'css-loader',
-             options: {
-               sourceMap: true
-             }
-           }, {
-             loader: 'postcss-loader',
-             options: {
-               plugins: () => [
-                 require('autoprefixer')
-               ],
-               sourceMap: true
-             }
-           }, {
-             loader: 'sass-loader',
-             options: {
-               includePaths: [path.resolve(__dirname, 'assets/src/styles')],
-               sourceMap: true
-             }
-           }
-         ]
-       }
-     ]
-   },
+          'style-loader',
+          {
+            loader: 'css-loader',
+            options: {
+              sourceMap: true
+            }
+          }, {
+            loader: 'postcss-loader',
+            options: {
+              plugins: () => [
+                require('autoprefixer')
+              ],
+              sourceMap: true
+            }
+          }, {
+            loader: 'sass-loader',
+            options: {
+              includePaths: [path.resolve(__dirname, 'assets/src/styles')],
+              sourceMap: true
+            }
+          }
+        ]
+      },
+      {
+        test: /\.svg(\?v=\d+\.\d+\.\d+)?$/,
+        use: [
+          {
+            loader: 'url-loader',
+            options: {
+              limit: 10000,
+              mimetype: 'image/svg+xml',
+              name: '[name].[ext]'
+            }
+          }
+        ]
+      },
+      {
+        test: /\.(jpe?g|png|gif|ico)$/i,
+        use: [
+          {
+            loader: 'file-loader',
+            options: {
+              name: 'images/[name].[ext]'
+            }
+          }
+        ]
+      },
+    ]
+  },
 }
 
 // // For info about this file refer to webpack and webpack-hot-middleware documentation
