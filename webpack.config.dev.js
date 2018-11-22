@@ -3,18 +3,19 @@ import HtmlWebpackPlugin from 'html-webpack-plugin';
 import path from 'path';
 
 export default {
-    resolve: {
-        extensions: ['*', '.js', '.jsx', '.json']
-    },
-    mode: 'development',
-    entry: {
-        'scripts/components/LanguageSelector': './assets/src/scripts/app/components/LanguageSelector/LanguageSelector.js',
-    },
-    output: {
-        path: path.resolve(__dirname, 'assets/dist'), // Note: Physical files are only output by the production build task `npm run build`.
-        filename: '[name].js',
-    },
-      plugins: [
+  resolve: {
+      extensions: ['*', '.js', '.jsx', '.json']
+  },
+  mode: 'development',
+  entry: {
+    'scripts/components/LanguageSelector': './assets/src/scripts/app/components/LanguageSelector/LanguageSelector.jsx',
+    'scripts/components/Form': './assets/src/scripts/app/components/Form/Form.jsx',
+  },
+  output: {
+      path: path.resolve(__dirname, 'assets/dist'), // Note: Physical files are only output by the production build task `npm run build`.
+      filename: '[name].js',
+  },
+  plugins: [
     // new HardSourceWebpackPlugin(), Node verion >= 8
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NoEmitOnErrorsPlugin(),
@@ -27,4 +28,13 @@ export default {
       inject: true
     })
   ],
+  module: {
+    rules: [
+      {
+        test: /\.jsx?$/,
+        exclude: /node_modules/,
+        use: ['babel-loader']
+      },
+    ]
+  },
 }

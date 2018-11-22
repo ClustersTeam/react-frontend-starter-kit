@@ -13,7 +13,7 @@
     "lint:watch": "npm run lint -- --watch",
     "clean-dist": "npm run remove-dist && mkdir dist",
     "remove-dist": "rimraf ./dist",
-    "prebuild": "npm run lint && npm run test && npm run clean-dist",
+    "prebuid": "npm run lint && npm run test && npm run clean-dist",
     "build": "babel-node tools/build.js && npm run open:dist",
     "analyze-bundle": "babel-node ./tools/analyzeBundle.js",
     "test": "jest"

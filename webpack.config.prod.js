@@ -8,25 +8,44 @@ export default {
     },
     mode: 'production',
     entry: {
-        'scripts/components/LanguageSelector': './assets/src/scripts/app/components/LanguageSelector/LanguageSelector.js',
+        'scripts/components/LanguageSelector': './assets/src/scripts/app/components/LanguageSelector/LanguageSelector.jsx',
+        'scripts/components/Form': './assets/src/scripts/app/components/Form/Form.jsx',
     },
     output: {
         path: path.resolve(__dirname, 'assets/dist'), // Note: Physical files are only output by the production build task `npm run build`.
         filename: '[name].js',
     },
-      plugins: [
-    // new HardSourceWebpackPlugin(), Node verion >= 8
-    new webpack.HotModuleReplacementPlugin(),
-    new webpack.NoEmitOnErrorsPlugin(),
-    new HtmlWebpackPlugin({     // Create HTML file that includes references to bundled CSS and JS.
+  plugins: [
+    // Generate HTML file that contains references to generated bundles. See here for how this works: https://github.com/ampedandwired/html-webpack-plugin#basic-usage
+    new HtmlWebpackPlugin({
       template: 'assets/src/index.ejs',
       minify: {
         removeComments: true,
-        collapseWhitespace: true
+        collapseWhitespace: true,
+        removeRedundantAttributes: true,
+        useShortDoctype: true,
+        removeEmptyAttributes: true,
+        removeStyleLinkTypeAttributes: true,
+        keepClosingSlash: true,
+        minifyJS: true,
+        minifyCSS: true,
+        minifyURLs: true
       },
-      inject: true
-    })
+      inject: true,
+      // Note that you can add custom options here if you need to handle other custom logic in index.html
+      // To track JavaScript errors via TrackJS, sign up for a free trial at TrackJS.com and enter your token below.
+      trackJSToken: ''
+    }),
   ],
+  module: {
+    rules: [
+      {
+        test: /\.js|\.jsx?$/,
+        exclude: /node_modules/,
+        use: ['babel-loader']
+      },
+    ]
+  },
 }
 
 // // For info about this file refer to webpack and webpack-hot-middleware documentation
