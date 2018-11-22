@@ -1,20 +1,17 @@
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import path from 'path';
+import {entry} from './tools/config.entry';
 
 export default {
-  resolve: {
-    extensions: ['*', '.js', '.jsx', '.json']
-  },
-  mode: 'production',
-  entry: {
-    'scripts/components/LanguageSelector': './assets/src/scripts/app/components/LanguageSelector/LanguageSelector.jsx',
-    'scripts/components/Form': './assets/src/scripts/app/components/Form/Form.jsx',
-    'scripts/views/Image': './assets/src/scripts/views/Image.js',
-  },
-  output: {
-    path: path.resolve(__dirname, 'assets/dist'), // Note: Physical files are only output by the production build task `npm run build`.
-    filename: '[name].js',
-  },
+    resolve: {
+        extensions: ['*', '.js', '.jsx', '.json']
+    },
+    mode: 'production',
+    entry,
+    output: {
+        path: path.resolve(__dirname, 'assets/dist'), // Note: Physical files are only output by the production build task `npm run build`.
+        filename: '[name].js',
+    },
   plugins: [
     // Generate HTML file that contains references to generated bundles. See here for how this works: https://github.com/ampedandwired/html-webpack-plugin#basic-usage
     new HtmlWebpackPlugin({
