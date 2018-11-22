@@ -1,17 +1,14 @@
 import webpack from 'webpack';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import path from 'path';
+import {entry} from './tools/config.entry';
 
 export default {
   resolve: {
       extensions: ['*', '.js', '.jsx', '.json']
   },
   mode: 'development',
-  entry: {
-    'scripts/components/LanguageSelector': './assets/src/scripts/app/components/LanguageSelector/LanguageSelector.jsx',
-    'scripts/components/Form': './assets/src/scripts/app/components/Form/Form.jsx',
-    'scripts/views/Image': './assets/src/scripts/views/Image.js',
-  },
+  entry,
   output: {
       path: path.resolve(__dirname, 'assets/dist'), // Note: Physical files are only output by the production build task `npm run build`.
       filename: '[name].js',
