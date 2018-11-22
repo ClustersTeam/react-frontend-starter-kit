@@ -10,6 +10,7 @@ export default {
   entry: {
     'scripts/components/LanguageSelector': './assets/src/scripts/app/components/LanguageSelector/LanguageSelector.jsx',
     'scripts/components/Form': './assets/src/scripts/app/components/Form/Form.jsx',
+    'scripts/views/Image': './assets/src/scripts/views/Image.js',
   },
   output: {
       path: path.resolve(__dirname, 'assets/dist'), // Note: Physical files are only output by the production build task `npm run build`.
