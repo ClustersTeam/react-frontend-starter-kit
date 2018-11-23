@@ -1,4 +1,5 @@
 import HtmlWebpackPlugin from 'html-webpack-plugin';
+import CopyWebpackPlugin from 'copy-webpack-plugin';
 import path from 'path';
 import {entry} from './tools/config.entry';
 
@@ -33,6 +34,14 @@ export default {
       // To track JavaScript errors via TrackJS, sign up for a free trial at TrackJS.com and enter your token below.
       trackJSToken: ''
     }),
+
+    new CopyWebpackPlugin([
+      {
+        from:'assets/src/images', 
+        to:'images'
+      } 
+    ]),
+     
   ],
   module: {
     rules: [
@@ -77,7 +86,7 @@ export default {
               mimetype: 'image/svg+xml',
               name: '[name].[ext]'
             }
-          }
+          },
         ]
       },
       {
@@ -86,7 +95,7 @@ export default {
           {
             loader: 'file-loader',
             options: {
-              name: 'images/[name].[ext]'
+              name: 'images/[name].[ext]',
             }
           }
         ]
