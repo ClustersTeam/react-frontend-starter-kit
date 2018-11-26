@@ -1,18 +1,19 @@
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import CopyWebpackPlugin from 'copy-webpack-plugin';
+import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 import path from 'path';
-import {entry} from './tools/config.entry';
+import { entry } from './tools/config.entry';
 
 export default {
-    resolve: {
-        extensions: ['*', '.js', '.jsx', '.json']
-    },
-    mode: 'production',
-    entry,
-    output: {
-        path: path.resolve(__dirname, 'assets/dist'), // Note: Physical files are only output by the production build task `npm run build`.
-        filename: '[name].js',
-    },
+  resolve: {
+    extensions: ['*', '.js', '.jsx', '.json']
+  },
+  mode: 'production',
+  entry,
+  output: {
+    path: path.resolve(__dirname, 'assets/dist'), // Note: Physical files are only output by the production build task `npm run build`.
+    filename: '[name].js',
+  },
   plugins: [
     // Generate HTML file that contains references to generated bundles. See here for how this works: https://github.com/ampedandwired/html-webpack-plugin#basic-usage
     new HtmlWebpackPlugin({
@@ -37,11 +38,15 @@ export default {
 
     new CopyWebpackPlugin([
       {
-        from:'assets/src/images', 
-        to:'images'
-      } 
+        from: 'assets/src/images',
+        to: 'images'
+      }
     ]),
-     
+
+    new MiniCssExtractPlugin({
+      filename: '[name].css'
+    }),
+
   ],
   module: {
     rules: [
@@ -53,24 +58,27 @@ export default {
       {
         test: /(\.css|\.scss|\.sass)$/,
         use: [
-          'style-loader',
+          MiniCssExtractPlugin.loader,
           {
             loader: 'css-loader',
             options: {
               sourceMap: true
             }
-          }, {
+          },
+          {
             loader: 'postcss-loader',
             options: {
               plugins: () => [
-                require('autoprefixer')
+                require('cssnano'),
+                require('autoprefixer'),
               ],
               sourceMap: true
             }
-          }, {
+          },
+          {
             loader: 'sass-loader',
             options: {
-              includePaths: [path.resolve(__dirname, 'assets/src/styles')],
+              includePaths: [path.resolve(__dirname, 'assets/dist/styles')],
               sourceMap: true
             }
           }
