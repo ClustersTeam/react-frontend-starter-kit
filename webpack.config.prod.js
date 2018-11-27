@@ -40,6 +40,10 @@ export default {
       {
         from: 'assets/src/images',
         to: 'images'
+      },
+      {
+        from: 'assets/src/fonts',
+        to: 'fonts'
       }
     ]),
 
@@ -104,6 +108,17 @@ export default {
             loader: 'file-loader',
             options: {
               name: 'images/[name].[ext]',
+            }
+          }
+        ]
+      },
+      {
+        test: /\.(woff(2)?|ttf|eot)(\?v=\d+\.\d+\.\d+)?$/,
+        use: [
+          {
+            loader: 'file-loader',
+            options: {
+              name: 'fonts/[name].[ext]'
             }
           }
         ]
